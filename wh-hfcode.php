@@ -16,7 +16,7 @@
  * Plugin Name:       WH header and footer code
  * Plugin URI:        http://www.webheroes.it
  * Description:       This plugin adds code in header and footer with script tag built in. Superpowered by <strong>Web Heroes.</strong>
- * Version:           1.0.0
+ * Version:           1.0.1a
  * Author:            Web Heroes
  * Author URI:        http://www.webheroes.it
  * License:           GPL-2.0+
@@ -28,6 +28,28 @@
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
+}
+
+add_action( 'init', 'github_plugin_updater_test_init' );
+function github_plugin_updater_test_init() {
+	include_once 'include/updater.php';
+	//define( 'WP_GITHUB_FORCE_UPDATE', true );
+	if ( is_admin() ) { // note the use of is_admin() to double check that this is happening in the admin
+		$config = array(
+			'slug' => plugin_basename( __FILE__ ),
+			'proper_folder_name' => 'wh-hfcode',
+			'api_url' => 'https://api.github.com/repos/mitch827/wh-hfcode',
+			'raw_url' => 'https://raw.github.com/mitch827/wh-hfcode/master',
+			'github_url' => 'https://github.com/mitch827/wh-hfcode',
+			'zip_url' => 'https://github.com/mitch827/wh-hfcode/archive/master.zip',
+			'sslverify' => true,
+			'requires' => '4.0.0',
+			'tested' => '4.2.3',
+			'readme' => 'README.md',
+			'access_token' => '',
+		);
+		new WP_GitHub_Updater( $config );
+	}
 }
 
 /**
