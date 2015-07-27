@@ -70,7 +70,7 @@ class WP_GitHub_Updater {
 		$defaults = array(
 			'slug' => plugin_basename( __FILE__ ),
 			'proper_folder_name' => dirname( plugin_basename( __FILE__ ) ),
-			'sslverify' => true,
+			'sslverify' => false,
 			'access_token' => '',
 		);
 
@@ -96,7 +96,7 @@ class WP_GitHub_Updater {
 		add_filter( 'http_request_timeout', array( $this, 'http_request_timeout' ) );
 
 		// set sslverify for zip download
-		add_filter( 'http_request_args', array( $this, 'http_request_sslverify' ), 10, 2 );
+		//add_filter( 'http_request_args', array( $this, 'http_request_sslverify' ), 10, 2 );
 	}
 
 	public function has_minimum_config() {
@@ -295,7 +295,8 @@ class WP_GitHub_Updater {
 				if ( is_wp_error( $github_data ) )
 					return false;
 
-				$github_data = json_decode( $github_data['body'] );
+				$github_data = @json_decode( $github_data['body'] );
+
 
 				// refresh every 6 hours
 				set_site_transient( md5($this->config['slug']).'_github_data', $github_data, 60*60*6 );
@@ -405,7 +406,7 @@ class WP_GitHub_Updater {
 		$response->last_updated = $this->config['last_updated'];
 		$response->sections = array( 'description' => $this->config['description'] );
 		$response->download_link = $this->config['zip_url'];
-
+		
 		return $response;
 	}
 

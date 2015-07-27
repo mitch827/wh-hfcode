@@ -63,7 +63,7 @@ class Wh_Hfcode_Admin {
 		$this->version = $version;
 
 	}
-
+	
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
