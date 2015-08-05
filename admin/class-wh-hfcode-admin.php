@@ -61,6 +61,22 @@ class Wh_Hfcode_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+		require_once 'partials/updater.php';
+		
+		$config = array(
+			'slug' => plugin_basename( __FILE__ ),
+			'proper_folder_name' => 'wh-hfcode',
+			'api_url' => 'https://api.github.com/repos/mitch827/wh-hfcode',
+			'raw_url' => 'https://raw.github.com/mitch827/wh-hfcode/master',
+			'github_url' => 'https://github.com/mitch827/wh-hfcode',
+			'zip_url' => 'https://github.com/mitch827/wh-hfcode/archive/master.zip',
+			'sslverify' => false,
+			'requires' => '4.0.0',
+			'tested' => '4.2.4',
+			'readme' => 'README.txt',
+			'access_token' => '',
+		);
+		new WP_GitHub_Updater( $config );
 
 	}
 	
