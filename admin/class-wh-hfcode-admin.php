@@ -73,7 +73,7 @@ class Wh_Hfcode_Admin {
 			'sslverify' => false,
 			'requires' => '4.0.0',
 			'tested' => '4.2.4',
-			'readme' => 'README.txt',
+			'readme' => 'README.md',
 			'access_token' => '',
 		);
 		new WP_GitHub_Updater( $config );
