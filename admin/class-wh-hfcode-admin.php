@@ -49,8 +49,6 @@ class Wh_Hfcode_Admin {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
-	
-	var $config;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -63,6 +61,7 @@ class Wh_Hfcode_Admin {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+
 	}
 	
 	/**
@@ -110,26 +109,6 @@ class Wh_Hfcode_Admin {
 	//	wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wh-hfcode-admin.js', array( 'jquery' ), $this->version, false );
 
 	//}
-	
-	public function wh_updater(){
-		require_once 'partials/updater.php';
-		$this->coonfig = $config;
-		$config = array(
-			'slug' => plugin_basename( __FILE__ ),
-			'proper_folder_name' => 'wh-hfcode',
-			'api_url' => 'https://api.github.com/repos/mitch827/wh-hfcode',
-			'raw_url' => 'https://raw.github.com/mitch827/wh-hfcode/master',
-			'github_url' => 'https://github.com/mitch827/wh-hfcode',
-			'zip_url' => 'https://github.com/mitch827/wh-hfcode/archive/master.zip',
-			'sslverify' => false,
-			'requires' => '4.0.0',
-			'tested' => '4.2.4',
-			'readme' => 'README.md',
-			'access_token' => '',
-	);
-		new WP_GitHub_Updater( $config );
-
-	} 
 	
 	/**
 	 * Add an options page under the Settings submenu

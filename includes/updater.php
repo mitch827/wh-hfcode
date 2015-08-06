@@ -151,8 +151,8 @@ class WP_GitHub_Updater {
 		}
 
 
-		if ( ! isset( $this->config['new_version'] ) )
-			$this->config['new_version'] = $this->get_new_version();
+		if ( ! isset( $this->config['_n_ver'] ) )
+			$this->config['_n_ver'] = $this->get__n_ver();
 
 		if ( ! isset( $this->config['last_updated'] ) )
 			$this->config['last_updated'] = $this->get_date();
@@ -211,8 +211,8 @@ class WP_GitHub_Updater {
 	 * @since 1.0
 	 * @return int $version the version number
 	 */
-	public function get_new_version() {
-		$version = get_site_transient( md5($this->config['slug']).'_new_version' );
+	public function get__n_ver() {
+		$version = get_site_transient( md5($this->config['slug']).'_n_ver' );
 
 		if ( $this->overrule_transients() || ( !isset( $version ) || !$version || '' == $version ) ) {
 
@@ -250,7 +250,7 @@ class WP_GitHub_Updater {
 
 			// refresh every 6 hours
 			if ( false !== $version )
-				set_site_transient( md5($this->config['slug']).'_new_version', $version, 60*60*6 );
+				set_site_transient( md5($this->config['slug']).'_n_ver', $version, 60*60*6 );
 		}
 
 		return $version;
@@ -362,11 +362,11 @@ class WP_GitHub_Updater {
 			return $transient;
 
 		// check the version and decide if it's new
-		$update = version_compare( $this->config['new_version'], $this->config['version'] );
+		$update = version_compare( $this->config['_n_ver'], $this->config['version'] );
 
 		if ( 1 === $update ) {
 			$response = new stdClass;
-			$response->new_version = $this->config['new_version'];
+			$response->_n_ver = $this->config['_n_ver'];
 			$response->slug = $this->config['proper_folder_name'];
 			$response->url = add_query_arg( array( 'access_token' => $this->config['access_token'] ), $this->config['github_url'] );
 			$response->package = $this->config['zip_url'];
@@ -397,7 +397,7 @@ class WP_GitHub_Updater {
 
 		$response->slug = $this->config['slug'];
 		$response->plugin_name  = $this->config['plugin_name'];
-		$response->version = $this->config['new_version'];
+		$response->version = $this->config['_n_ver'];
 		$response->author = $this->config['author'];
 		$response->homepage = $this->config['homepage'];
 		$response->requires = $this->config['requires'];
