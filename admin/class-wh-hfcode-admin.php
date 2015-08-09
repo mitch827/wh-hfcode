@@ -119,7 +119,7 @@ class Wh_Hfcode_Admin {
 	 
 	    $this->plugin_screen_hook_suffix = add_options_page(
 	        __( 'Web Heroes header and footer code', 'wh-hfcode' ),
-	        __( 'Header and footer code', 'wh-hfcode' ),
+	        __( 'Header and Footer Code', 'wh-hfcode' ),
 	        'manage_options',
 	        $this->plugin_name,
 	        array( $this, 'display_options_page' )
@@ -181,7 +181,6 @@ class Wh_Hfcode_Admin {
 			<textarea cols='60' rows='10' name="<?php echo $this->option_name . '_textarea-0'; ?>" id="<?php echo $this->option_name . '_textarea-0'; ?>"><?php _e( $footer_code, 'wh-hfcode' ); ?></textarea>
 			
 		<?php
-			var_dump($footer_code);
 	}
 	
 	/**
