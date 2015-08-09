@@ -69,7 +69,7 @@ class Wh_Hfcode {
 	public function __construct() {
 
 		$this->plugin_name = 'wh-hfcode';
-		$this->version = '1.0.0';
+		$this->version = '1.0.6a';
 
 		$this->load_dependencies();
 		$this->set_locale();
