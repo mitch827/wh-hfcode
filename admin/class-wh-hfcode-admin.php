@@ -117,12 +117,13 @@ class Wh_Hfcode_Admin {
 	 */
 	public function add_options_page() {
 	 
-	    $this->plugin_screen_hook_suffix = add_options_page(
-	        __( 'Web Heroes header and footer code', 'wh-hfcode' ),
-	        __( 'Header and Footer Code', 'wh-hfcode' ),
-	        'manage_options',
-	        $this->plugin_name,
-	        array( $this, 'display_options_page' )
+	    $this->plugin_screen_hook_suffix = add_submenu_page(
+		    'web-heroes', 
+		    __( 'Web Heroes header and footer code', 'wh-hfcode' ), 
+		    __( 'Header and Footer Code', 'wh-hfcode' ), 
+		    'manage_options', 
+		    $this->plugin_name, 
+		    array( $this, 'display_options_page' ) 
 	    );
 	}
 	
