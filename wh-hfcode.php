@@ -14,7 +14,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       WH header and footer code
- * Plugin URI:        http://www.webheroes.it
+ * Plugin URI:        https://github.com/mitch827/wh-hfcode
  * Description:       This plugin adds code in header and footer with script tag built in. Superpowered by <strong>Web Heroes.</strong>
  * Version:           1.0.8a
  * Author:            Web Heroes
